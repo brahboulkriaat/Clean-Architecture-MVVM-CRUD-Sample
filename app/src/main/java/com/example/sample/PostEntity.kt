@@ -1,7 +1,11 @@
 package com.example.sample
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "Posts")
 class PostEntity(
-    val id: Int,
+    @PrimaryKey val id: Int,
     val userId: Int,
     val title: String,
     val body: String
