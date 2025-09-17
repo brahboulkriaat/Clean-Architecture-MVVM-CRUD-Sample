@@ -1,4 +1,4 @@
-package com.example.sample
+package com.example.sample.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -28,6 +28,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.sample.ui.PostViewModel
 import com.example.sample.ui.theme.SampleTheme
 import dagger.hilt.android.AndroidEntryPoint
 

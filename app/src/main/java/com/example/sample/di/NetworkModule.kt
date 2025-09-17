@@ -1,7 +1,6 @@
-package com.example.sample
+package com.example.sample.di
 
-import android.app.Application
-import androidx.room.Room
+import com.example.sample.data.remote.PostApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,7 +13,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object AppModule {
+object NetworkModule {
 
     @Provides
     fun provideBaseUrl() = "https://jsonplaceholder.typicode.com/"
@@ -32,19 +31,15 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideRetrofit(okHttpClient: OkHttpClient, baseUrl:String): PostApi =
+    fun provideRetrofit(okHttpClient: OkHttpClient, baseUrl:String): Retrofit =
         Retrofit.Builder()
             .baseUrl(baseUrl)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(PostApi::class.java)
 
-    @Provides
+
     @Singleton
-    fun provideDatabase(app: Application): PostDatabase =
-        Room.databaseBuilder(app, PostDatabase::class.java, "posts.db").build()
-
     @Provides
-    fun providePostDao(db: PostDatabase): PostDao = db.postDao()
+    fun providePostApi(retrofit: Retrofit): PostApi = retrofit.create(PostApi::class.java)
 }

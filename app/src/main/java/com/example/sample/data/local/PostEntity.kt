@@ -1,7 +1,8 @@
-package com.example.sample
+package com.example.sample.data.local
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.example.sample.domain.Post
 
 @Entity(tableName = "Posts")
 class PostEntity(

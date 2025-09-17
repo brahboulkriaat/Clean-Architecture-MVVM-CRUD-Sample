@@ -1,7 +1,9 @@
-package com.example.sample
+package com.example.sample.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.sample.data.repository.PostRepository
+import com.example.sample.domain.Post
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -23,7 +25,7 @@ class PostViewModel @Inject constructor(
         .map { it }
         .stateIn(
             viewModelScope,
-            SharingStarted.WhileSubscribed(5_000),
+            SharingStarted.Companion.WhileSubscribed(5_000),
             emptyList()
         )
 
