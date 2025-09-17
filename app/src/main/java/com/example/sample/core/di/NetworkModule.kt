@@ -1,4 +1,4 @@
-package com.example.sample.di
+package com.example.sample.core.di
 
 import com.example.sample.data.remote.PostApi
 import dagger.Module
