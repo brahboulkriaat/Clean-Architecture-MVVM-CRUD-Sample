@@ -1,5 +1,6 @@
 package com.example.sample.ui
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.sample.data.repository.PostRepository
@@ -22,10 +23,10 @@ class PostViewModel @Inject constructor(
     }
 
     val posts: StateFlow<List<Post>> = repository.posts
-        .map { it }
+        //.map { it }
         .stateIn(
             viewModelScope,
-            SharingStarted.Companion.WhileSubscribed(5_000),
+            /*SharingStarted.Companion.WhileSubscribed(5_000),*/ SharingStarted.Lazily,
             emptyList()
         )
 
@@ -34,7 +35,7 @@ class PostViewModel @Inject constructor(
             try {
                 repository.getAndSavePosts()
             } catch (e: Exception) {
-
+                Log.e("PostViewModel", "Error fetching posts", e)
             }
         }
     }
