@@ -2,7 +2,6 @@ package com.example.sample.data.repository
 
 import android.util.Log
 import com.example.sample.data.local.PostDao
-import com.example.sample.data.local.toEntity
 import com.example.sample.data.remote.PostApi
 import com.example.sample.domain.model.Post
 import kotlinx.coroutines.flow.Flow

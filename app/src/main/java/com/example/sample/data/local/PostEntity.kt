@@ -18,10 +18,3 @@ class PostEntity(
         body = body
     )
 }
-
-fun Post.toEntity() = PostEntity(
-    userId = userId,
-    id = id,
-    title = title,
-    body = body
-)
