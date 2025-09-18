@@ -1,4 +1,4 @@
-package com.example.sample.domain
+package com.example.sample.domain.model
 
 data class Post(
     val userId: Int,
