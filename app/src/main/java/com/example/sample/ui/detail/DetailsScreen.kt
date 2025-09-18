@@ -1,5 +1,6 @@
 package com.example.sample.ui.detail
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -22,11 +23,19 @@ fun DetailsScreen(
 
     if (post != null) {
         Column(modifier = Modifier.padding(16.dp)) {
-            Text(text = post.title, style = MaterialTheme.typography.headlineSmall)
+            Text(
+                text = post.title,
+                style = MaterialTheme.typography.headlineSmall
+            )
             Spacer(modifier = Modifier.height(8.dp))
-            Text(text = post.body)
+            Text(
+                text = post.body,
+                style = MaterialTheme.typography.bodyLarge
+            )
         }
     } else {
-        Text("Post not found")
+        Box(modifier = Modifier.padding(16.dp)) {
+            Text("Post not found")
+        }
     }
 }
