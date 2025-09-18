@@ -14,12 +14,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.sample.ui.PostViewModel
+import com.example.sample.ui.MainViewModel
 import com.example.sample.ui.theme.SampleTheme
 
 @Composable
 fun ListScreen(
-    viewModel: PostViewModel = hiltViewModel(),
+    viewModel: MainViewModel = hiltViewModel(),
     onPostClick: (Int) -> Unit
 ) {
     val posts by viewModel.posts.collectAsState()

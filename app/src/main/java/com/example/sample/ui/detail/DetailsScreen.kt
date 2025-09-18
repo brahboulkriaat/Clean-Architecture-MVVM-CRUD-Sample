@@ -11,12 +11,12 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.sample.ui.PostViewModel
+import com.example.sample.ui.MainViewModel
 
 @Composable
 fun DetailsScreen(
     postId: Int,
-    viewModel: PostViewModel = hiltViewModel()
+    viewModel: MainViewModel = hiltViewModel()
 ) {
     val post = viewModel.posts.collectAsState().value.find { it.id == postId }
 
