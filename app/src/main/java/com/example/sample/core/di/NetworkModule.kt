@@ -16,7 +16,7 @@ import javax.inject.Singleton
 object NetworkModule {
 
     @Provides
-    fun provideBaseUrl(): String = "https://jsonplaceholder.typicode.com/"
+    fun provideBaseUrl(): String = "https://jsonplaceholder.typicode.com"
 
     @Provides
     @Singleton
@@ -31,8 +31,12 @@ object NetworkModule {
         okHttpClient: OkHttpClient,
         baseUrl: String
     ): Retrofit =
-        Retrofit.Builder().baseUrl(baseUrl).client(okHttpClient)
-            .addConverterFactory(GsonConverterFactory.create()).build()
+        Retrofit
+            .Builder()
+            .baseUrl(baseUrl)
+            .client(okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
 
 
     @Singleton
