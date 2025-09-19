@@ -2,8 +2,8 @@ package com.example.app.core.di
 
 import android.app.Application
 import androidx.room.Room
-import com.example.app.data.local.PostDao
-import com.example.app.data.local.PostDatabase
+import com.example.data.local.PostDao
+import com.example.data.local.PostDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

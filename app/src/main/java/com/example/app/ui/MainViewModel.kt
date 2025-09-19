@@ -3,8 +3,8 @@ package com.example.app.ui
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.app.data.repository.PostRepository
-import com.example.app.domain.model.Post
+import com.example.data.repository.PostRepository
+import com.example.data.model.Post
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow

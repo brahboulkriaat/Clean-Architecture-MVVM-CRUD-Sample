@@ -2,8 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    alias(libs.plugins.dagger.hilt)
-    alias(libs.plugins.kotlin.ksp)
+    alias(libs.plugins.dagger.hilt) //TODO("remove")
+    alias(libs.plugins.kotlin.ksp) //TODO("remove")
 }
 
 android {
@@ -11,7 +11,7 @@ android {
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.example.sample"
+        applicationId = "com.example.app"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
@@ -51,11 +51,11 @@ dependencies {
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
-    implementation(libs.androidx.room.ktx)
-    ksp(libs.androidx.room.compiler)
-    implementation(libs.androidx.room.runtime)
-    implementation(libs.retrofit)
-    implementation(libs.retrofit.converter.gson)
+    implementation(libs.androidx.room.ktx) //TODO("remove")
+    ksp(libs.androidx.room.compiler) //TODO("remove")
+    implementation(libs.androidx.room.runtime) //TODO("remove")
+    implementation(libs.retrofit) //TODO("remove")
+    implementation(libs.retrofit.converter.gson) //TODO("remove")
     implementation(libs.hilt.android)
     implementation(libs.okhttp.logging.interceptor)
     implementation(libs.androidx.navigation.compose)
@@ -68,4 +68,6 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+
+    implementation(project(":data"))
 }

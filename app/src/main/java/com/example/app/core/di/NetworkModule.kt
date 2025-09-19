@@ -1,6 +1,6 @@
 package com.example.app.core.di
 
-import com.example.app.data.remote.PostApi
+import com.example.data.remote.PostApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

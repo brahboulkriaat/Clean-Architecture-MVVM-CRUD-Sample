@@ -1,18 +1,21 @@
-package com.example.app.data.repository
+package com.example.data.repository
 
 import android.util.Log
-import com.example.app.data.local.PostDao
-import com.example.app.data.remote.PostApi
-import com.example.app.domain.model.Post
+import com.example.data.local.PostDao
+import com.example.data.mapper.toDomain
+import com.example.data.mapper.toEntity
+import com.example.data.model.Post
+import com.example.data.remote.PostApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
+import kotlin.collections.map
 
 class PostRepository @Inject constructor(
     private val api: PostApi,
     private val dao: PostDao
 ) {
-    val posts: Flow<List<Post>> = dao.getAllPosts().map { posts -> posts.map { it.toPost() } }
+    val posts: Flow<List<Post>> = dao.getAllPosts().map { posts -> posts.map { it.toDomain() } }
 
     suspend fun getAndSavePosts() {
         try {
