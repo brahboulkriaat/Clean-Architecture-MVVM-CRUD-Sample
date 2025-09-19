@@ -25,4 +25,12 @@ class PostRepositoryImpl @Inject constructor(
             Log.e("PostRepository", "Error fetching posts", e)
         }
     }
+
+    override fun getAllPosts(): Flow<List<Post>> {
+        TODO("Not yet implemented")
+    }
+
+    override fun getPostById(id: Int): Flow<Post?> {
+        TODO("Not yet implemented")
+    }
 }
