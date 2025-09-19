@@ -1,8 +1,8 @@
 package com.example.data.mapper
 
 import com.example.data.local.entity.PostEntity
-import com.example.data.model.Post
 import com.example.data.remote.dto.PostDto
+import com.example.domain.model.Post
 
 fun PostDto.toEntity() = PostEntity(
     userId = userId,
