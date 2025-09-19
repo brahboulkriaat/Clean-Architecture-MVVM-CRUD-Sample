@@ -17,6 +17,7 @@ logging-interceptor = "5.1.0"
 navigationCompose = "2.9.4"
 appcompat = "1.7.1"
 material = "1.13.0"
+jetbrainsKotlinJvm = "2.2.20"
 
 [libraries]
 okhttp-logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "logging-interceptor" }
@@ -55,4 +56,5 @@ dagger-hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt"}
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 kotlin-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
+jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
 

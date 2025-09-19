@@ -9,18 +9,17 @@ import com.example.data.remote.PostApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
-import kotlin.collections.map
 
 class PostRepository @Inject constructor(
     private val api: PostApi,
     private val dao: PostDao
 ) {
-    val posts: Flow<List<Post>> = dao.getAllPosts().map { posts -> posts.map { it.toDomain() } }
+    val posts: Flow<List<Post>> = dao.getAllPosts().map { posts -> posts.map { it.toDomain() } } //TODO("mapper")
 
     suspend fun getAndSavePosts() {
         try {
             val posts = api.getPosts()
-            dao.insertAllPosts(posts.map { it.toEntity() })
+            dao.insertAllPosts(posts.map { it.toEntity() }) //TODO("mapper")
         } catch (e: Exception) {
             Log.e("PostRepository", "Error fetching posts", e)
         }
