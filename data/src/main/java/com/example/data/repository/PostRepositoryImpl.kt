@@ -26,11 +26,7 @@ class PostRepositoryImpl @Inject constructor(
         }
     }
 
-    override fun getAllPosts(): Flow<List<Post>> {
-        TODO("Not yet implemented")
-    }
+    override fun getAllPosts(): Flow<List<Post>> = dao.getAllPosts().map { posts -> posts.map { it.toDomain() } } //TODO("mapper")
 
-    override fun getPostById(id: Int): Flow<Post?> {
-        TODO("Not yet implemented")
-    }
+    override fun getPostById(id: Int): Flow<Post?> = dao.getPostById(id).map { it?.toDomain() } //TODO("mapper") -> posts.map { it.toDomain() } } //TODO("mapper")
 }
