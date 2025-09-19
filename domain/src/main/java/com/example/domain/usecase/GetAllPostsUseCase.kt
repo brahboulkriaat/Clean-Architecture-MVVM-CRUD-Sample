@@ -1,0 +1,9 @@
+package com.example.domain.usecase
+
+import com.example.domain.model.Post
+import com.example.domain.repository.PostRepository
+import kotlinx.coroutines.flow.Flow
+
+class GetAllPostsUseCase /*@Inject constructor*/(private val postRepository: PostRepository) {
+    operator fun invoke(): Flow<List<Post>> = postRepository.getAllPosts()
+}
