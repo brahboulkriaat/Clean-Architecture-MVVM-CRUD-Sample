@@ -1,9 +1,7 @@
 package com.example.data.repository
 
-import android.util.Log
 import com.example.data.local.PostDao
 import com.example.data.mapper.toDomain
-import com.example.data.mapper.toEntity
 import com.example.data.remote.PostApi
 import com.example.domain.model.Post
 import com.example.domain.repository.PostRepository
@@ -14,7 +12,7 @@ import javax.inject.Inject
 class PostRepositoryImpl @Inject constructor(
     private val api: PostApi,
     private val dao: PostDao
-): PostRepository {
+) : PostRepository {
     // val posts: Flow<List<Post>> = dao.getAllPosts().map { posts -> posts.map { it.toDomain() } } //TODO("mapper")
 
     /*suspend fun getAndSavePosts() {
@@ -26,7 +24,9 @@ class PostRepositoryImpl @Inject constructor(
         }
     }*/
 
-    override fun getAllPosts(): Flow<List<Post>> = dao.getAllPosts().map { posts -> posts.map { it.toDomain() } } //TODO("mapper")
+    override fun getAllPosts(): Flow<List<Post>> =
+        dao.getAllPosts().map { posts -> posts.map { it.toDomain() } } //TODO("mapper")
 
-    override fun getPostById(id: Int): Flow<Post?> = dao.getPostById(id).map { it?.toDomain() } //TODO("mapper") -> posts.map { it.toDomain() } } //TODO("mapper")
+    override fun getPostById(id: Int): Flow<Post?> = dao.getPostById(id)
+        .map { it?.toDomain() } //TODO("mapper") -> posts.map { it.toDomain() } } //TODO("mapper")
 }
