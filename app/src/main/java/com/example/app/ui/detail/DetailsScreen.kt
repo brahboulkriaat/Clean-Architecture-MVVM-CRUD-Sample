@@ -9,6 +9,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -16,20 +17,20 @@ import com.example.app.ui.MainViewModel
 
 @Composable
 fun DetailsScreen(
-    postId: Int,
+    id: Int,
     viewModel: MainViewModel = hiltViewModel()
 ) {
-    val post = viewModel.posts.collectAsState().value.find { it.id == postId }
+    val post by viewModel.getPost(id).collectAsState(null)
 
     if (post != null) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(
-                text = post.title,
+                text = post!!.title,
                 style = MaterialTheme.typography.headlineSmall
             )
             Spacer(modifier = Modifier.height(8.dp))
             Text(
-                text = post.body,
+                text = post!!.body,
                 style = MaterialTheme.typography.bodyLarge
             )
         }
