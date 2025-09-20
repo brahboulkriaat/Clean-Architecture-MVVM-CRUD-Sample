@@ -1,27 +1,25 @@
 package com.example.app.ui
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.data.repository.PostRepositoryImpl
 import com.example.domain.model.Post
+import com.example.domain.usecase.GetAllPostsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val repository: PostRepositoryImpl
+    getAllPostsUseCase: GetAllPostsUseCase
 ) : ViewModel() {
 
     init {
-        refreshPosts()
+        //refreshPosts()
     }
 
-    val posts: StateFlow<List<Post>> = repository.posts
+    val posts: StateFlow<List<Post>> = getAllPostsUseCase()
         //.map { it }
         .stateIn(
             viewModelScope,
@@ -29,7 +27,7 @@ class MainViewModel @Inject constructor(
             emptyList()
         )
 
-    fun refreshPosts() {
+    /*fun refreshPosts() {
         viewModelScope.launch {
             try {
                 repository.getAndSavePosts()
@@ -37,5 +35,5 @@ class MainViewModel @Inject constructor(
                 Log.e("PostViewModel", "Error fetching posts", e)
             }
         }
-    }
+    }*/
 }

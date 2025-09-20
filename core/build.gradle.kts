@@ -56,4 +56,5 @@ dependencies {
     ksp(libs.androidx.room.compiler)
 
     implementation(project(":data"))
+    implementation(project(":domain"))
 }
