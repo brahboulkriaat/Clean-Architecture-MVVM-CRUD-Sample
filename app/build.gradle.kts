@@ -52,7 +52,6 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.room.ktx)
-    implementation(project(":domain")) //TODO("remove")
     ksp(libs.androidx.room.compiler) //TODO("remove")
     implementation(libs.androidx.room.runtime) //TODO("remove")
     implementation(libs.retrofit) //TODO("remove")
@@ -70,5 +69,7 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
 
-    implementation(project(":data"))
+    implementation(project(":domain"))
+    implementation(project(":data"))//TODO("remove")
+    implementation(project(":core"))
 }
