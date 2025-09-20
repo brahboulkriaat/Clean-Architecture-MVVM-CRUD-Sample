@@ -5,8 +5,11 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -15,28 +18,37 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.app.ui.MainViewModel
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DetailsScreen(
     id: Int,
     viewModel: MainViewModel = hiltViewModel()
 ) {
-    val post by viewModel.getPost(id).collectAsState(null)
-
-    if (post != null) {
-        Column(modifier = Modifier.padding(16.dp)) {
-            Text(
-                text = post!!.title,
-                style = MaterialTheme.typography.headlineSmall
-            )
-            Spacer(modifier = Modifier.height(8.dp))
-            Text(
-                text = post!!.body,
-                style = MaterialTheme.typography.bodyLarge
-            )
+    Scaffold(
+        topBar = {
+            TopAppBar(title = { Text("Post Details") })
         }
-    } else {
-        Box(modifier = Modifier.padding(16.dp)) {
-            Text("Post not found")
+    ) {
+        val post by viewModel.getPost(id).collectAsState(null)
+
+        if (post != null) {
+            Column(modifier = Modifier
+                .padding(it)
+                .padding(16.dp)) {
+                Text(
+                    text = post!!.title,
+                    style = MaterialTheme.typography.headlineSmall
+                )
+                Spacer(modifier = Modifier.height(8.dp))
+                Text(
+                    text = post!!.body,
+                    style = MaterialTheme.typography.bodyLarge
+                )
+            }
+        } else {
+            Box(modifier = Modifier.padding(16.dp)) {
+                Text("Post not found")
+            }
         }
     }
 }
