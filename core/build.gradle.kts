@@ -46,6 +46,12 @@ dependencies {
     implementation(libs.hilt.android)
     implementation(libs.androidx.room.runtime)
 
+    //region Retorfit + OKHttp
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.converter.gson)
+    implementation(libs.okhttp.logging.interceptor)
+    //endregion
+
     ksp(libs.hilt.android.compiler)
     ksp(libs.androidx.room.compiler)
 

@@ -57,7 +57,7 @@ dependencies {
     implementation(libs.retrofit) //TODO("remove")
     implementation(libs.retrofit.converter.gson) //TODO("remove")
     implementation(libs.hilt.android)
-    implementation(libs.okhttp.logging.interceptor)
+    implementation(libs.okhttp.logging.interceptor) //TODO("remove")
     implementation(libs.androidx.navigation.compose)
     ksp(libs.hilt.android.compiler)
     implementation(libs.hilt.navigation.compose)
