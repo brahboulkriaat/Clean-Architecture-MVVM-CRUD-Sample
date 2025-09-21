@@ -1,4 +1,4 @@
-package com.example.core.util
+package com.example.domain.utill
 
 sealed class Result<out T> {
     object Loading : Result<Nothing>()

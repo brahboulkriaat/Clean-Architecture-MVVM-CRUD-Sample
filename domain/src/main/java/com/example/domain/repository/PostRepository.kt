@@ -2,6 +2,7 @@ package com.example.domain.repository
 
 import com.example.domain.model.Post
 import kotlinx.coroutines.flow.Flow
+import com.example.domain.utill.Result
 
 interface PostRepository {
     fun getAllPosts(): Flow<Result<List<Post>>>

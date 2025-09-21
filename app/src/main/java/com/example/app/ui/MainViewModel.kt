@@ -5,12 +5,14 @@ import androidx.lifecycle.viewModelScope
 import com.example.domain.model.Post
 import com.example.domain.usecase.GetAllPostsUseCase
 import com.example.domain.usecase.GetPostByIdUseCase
+import com.example.domain.utill.Result
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
 import javax.inject.Inject
+
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
@@ -22,15 +24,15 @@ class MainViewModel @Inject constructor(
         //refreshPosts()
     }
 
-    val posts: StateFlow<List<Post>> = getAllPostsUseCase()
+    val posts: StateFlow<Result<List<Post>>> = getAllPostsUseCase()
         //.map { it }
         .stateIn(
             viewModelScope,
             /*SharingStarted.Companion.WhileSubscribed(5_000),*/ SharingStarted.Lazily,
-            emptyList()
+            Result.Loading
         )
 
-    fun getPost(id: Int): Flow<Post?> = getPostByIdUseCase(id)
+    fun getPost(id: Int): Flow<Result<Post>> = getPostByIdUseCase(id)
 
     /*fun refreshPosts() {
         viewModelScope.launch {

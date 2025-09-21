@@ -8,7 +8,7 @@ import com.example.domain.repository.PostRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
-import com.example.core.util.Result
+import com.example.domain.utill.Result
 import com.example.data.mapper.toEntity
 import kotlinx.coroutines.flow.emitAll
 import kotlinx.coroutines.flow.first
