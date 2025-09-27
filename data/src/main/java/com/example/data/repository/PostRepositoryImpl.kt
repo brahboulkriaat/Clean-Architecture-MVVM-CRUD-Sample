@@ -49,7 +49,7 @@ class PostRepositoryImpl @Inject constructor(
     // dao.getAllPosts().map { posts -> posts.map { it.toDomain() } } //TODO("mapper")
 
     override fun getPostById(id: Int): Flow<Result<Post>> = flow {
-        emit(Result.Loading)
+        // emit(Result.Loading)
         try {
             dao.getPostById(id).collect { entity ->
                 if (entity != null) {
