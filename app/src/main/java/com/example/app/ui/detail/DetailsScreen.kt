@@ -1,6 +1,5 @@
 package com.example.app.ui.detail
 
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -14,11 +13,11 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.app.ui.MainViewModel
+import com.example.app.ui.common.ErrorScreen
 import com.example.app.ui.common.LoadingScreen
 import com.example.domain.model.Post
 import com.example.domain.utill.Result
@@ -46,15 +45,11 @@ fun DetailsScreen(
             }
 
             is Result.Error -> {
-                //TODO ErrorScreen((result as Result.Error).message)
                 val message = (result as Result.Error).message
-                Box(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(it), contentAlignment = Alignment.Center
-                ) {
-                    Text("Error: $message", color = MaterialTheme.colorScheme.error)
-                }
+                ErrorScreen(
+                    modifier = Modifier.fillMaxSize(),
+                    message = message
+                )
             }
 
             is Result.Success -> {

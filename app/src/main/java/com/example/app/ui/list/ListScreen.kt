@@ -22,6 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.app.ui.MainViewModel
+import com.example.app.ui.common.ErrorScreen
 import com.example.app.ui.common.LoadingScreen
 import com.example.app.ui.theme.SampleTheme
 import com.example.domain.model.Post
@@ -49,11 +50,11 @@ fun ListScreen(
             }
 
             is Result.Error -> {
-                //TODO ErrorScreen((result as Result.Error).message)
                 val message = (result as Result.Error).message
-                Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                    Text("Error: $message", color = MaterialTheme.colorScheme.error)
-                }
+                ErrorScreen(
+                    modifier = Modifier.fillMaxSize(),
+                    message = message
+                )
             }
 
             is Result.Success -> {
