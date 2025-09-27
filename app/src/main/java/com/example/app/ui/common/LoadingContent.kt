@@ -7,7 +7,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
 @Composable
-fun LoadingScreen(
+fun LoadingContent(
     modifier: Modifier = Modifier
 ) {
     Box(

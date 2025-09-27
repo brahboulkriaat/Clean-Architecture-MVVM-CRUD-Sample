@@ -1,12 +1,8 @@
 package com.example.app.ui.detail
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -17,8 +13,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.app.ui.MainViewModel
-import com.example.app.ui.common.ErrorScreen
-import com.example.app.ui.common.LoadingScreen
+import com.example.app.ui.common.ErrorContent
+import com.example.app.ui.common.LoadingContent
 import com.example.domain.model.Post
 import com.example.domain.utill.Result
 
@@ -37,7 +33,7 @@ fun DetailsScreen(
 
         when (result) {
             is Result.Loading -> {
-                LoadingScreen(
+                LoadingContent(
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(it)
@@ -46,30 +42,20 @@ fun DetailsScreen(
 
             is Result.Error -> {
                 val message = (result as Result.Error).message
-                ErrorScreen(
+                ErrorContent(
                     modifier = Modifier.fillMaxSize(),
                     message = message
                 )
             }
 
             is Result.Success -> {
-                //TODO DetailsScreen(post = (result as Result.Success<Post>).data)
                 val post = (result as Result.Success<Post>).data
-                Column(
+                SuccessContent(
                     modifier = Modifier
                         .padding(it)
-                        .padding(16.dp)
-                ) {
-                    Text(
-                        text = post.title,
-                        style = MaterialTheme.typography.headlineSmall
-                    )
-                    Spacer(modifier = Modifier.height(8.dp))
-                    Text(
-                        text = post.body,
-                        style = MaterialTheme.typography.bodyLarge
-                    )
-                }
+                    .padding(16.dp),
+                    post = post
+                )
             }
         }
     }

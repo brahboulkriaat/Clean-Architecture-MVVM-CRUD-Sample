@@ -51,7 +51,6 @@ class PostRepositoryImpl @Inject constructor(
     override fun getPostById(id: Int): Flow<Result<Post>> = flow {
         emit(Result.Loading)
         try {
-            throw Exception("Generic Exception")
             dao.getPostById(id).collect { entity ->
                 if (entity != null) {
                     emit(Result.Success(entity.toDomain()))
